@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+
+
+	function inserirRegistro(){
+		var disciplina = document.getElementById("inputDisciplina").value
+		var nota = document.getElementById("inputNota").value
+
+		var tabela = document.getElementById("registros")
+
+		var linhasTotais = tabela.rows.length
+
+
+		var novaLinha = tabela.insertRow(linhasTotais)
+		
+		if (nota.length == 0){
+			window.alert('Nota inválida')
+			
+		}else{
+			
+		
+		var novaCelulaDisciplina = novaLinha.insertCell(0)
+
+		var novaCelulaNota = novaLinha.insertCell(1)
+		
+		var novaSit = novaLinha.insertCell(2)
+
+		novaCelulaDisciplina.innerHTML = disciplina
+		novaCelulaNota.innerHTML = nota
+		if(nota <5){
+			novaSit.innerHTML = 'Reprovado'
+		}else{
+			novaSit.innerHTML = 'Aprovado'
+		}
+		
+		}
+	}
+
+
+
+
+
+
+
+	function validacao_nota(){
+		var nota = document.getElementById("inputNota")
+		var num = [1,2,3,4,5,6,7,8,9,0]
+		if(nota.value > 10){
+
+			nota.value = 10
+		}
+		if (nota.value < 0  ){
+			nota.value = 0
+		}
+		
+		if (nota.value > 0 || nota.value < 10){
+			nota.value = nota.value
+		}
+		
+		
+	}
+
+
+
+
+
+
+
+</script>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<h2>Atividade</h2>
+    	Disciplina <input type="text" id="inputDisciplina" placeholder="Disciplina">
+    	<br>
+    	<br>
+    	Nota <input type="number" id="inputNota" placeholder="NOTA" onkeyup="validacao_nota()">
+    	<input type="button"/ value="inserir registro" onclick="inserirRegistro()"> 
+    	<table id="registros" border="1">
+    		<tr>
+    			<th>Disciplina</th>
+    			<th>Nota</th>
+    			<th>Situação</th>
+    		</tr>
+    		<tr>
+    			<td></td>
+    			<td></td>
+    			<td></td>
+    		</tr>
+    	</table>
+</head>
+<body>
+
+</body>
+</html>
